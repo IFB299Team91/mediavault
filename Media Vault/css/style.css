@@ -1,0 +1,396 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+*
+{
+    font-family: 'Roboto', sans-serif;
+}
+body
+{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    background-color: #B0BEC5;
+}
+header
+{
+    position: relative;
+    z-index: 3;
+
+    height: 65px;
+
+    color: #fff;
+    border-bottom: 5px solid #607d8b;
+    background-color: #263238;
+    box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+}
+header h1
+{
+    margin: 0;
+    margin-left: 14px;
+    padding-top: 13.5px;
+}
+.logo img
+{
+    margin-bottom: -6px;
+    margin-right: 8px;
+}
+
+section
+{
+    width: 100%;
+}
+aside
+{
+    position: absolute;
+    z-index: 1;
+
+    float: left;
+
+    width: 100%;
+    max-width: 220px;
+    height: calc(100% - 65px);
+
+    border-right: 1px solid #ccc;
+    background-color: #f2f2f2;
+}
+
+.options a {
+
+    position: absolute;
+
+    color: #333;
+    font-size: 12px;
+    width: calc(100% - 14px);
+    padding-left: 14px;
+    padding-top: 11.5px;
+    padding-bottom: 11.5px;
+
+    text-decoration: none;
+}
+.options img {
+    margin-bottom: -2.5px;
+    margin-right: 6px;
+}
+.options li
+{
+    width: 220px;
+    height: 42px;
+    border-bottom: 1px solid #EEE;
+}
+.options li:hover
+{
+    background-color: #E7E7E7;  
+}
+.options ul
+{
+    margin: 0;
+    padding: 0;
+}
+.userform
+{
+    position: absolute;
+    top: 50%;
+    right: 50%;
+
+    margin-top: -128.5px;
+    margin-right: -148px;
+    padding: 20px 20px 20px 20px;
+
+    border-radius: 2px;
+    background-color: #f2f2f2;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+}
+.userform p, 
+h2
+{
+    font-size: 20px;
+
+    margin: 15px;
+    margin-top: 5px;
+
+    text-align: center;
+}
+.userform h2
+{
+    padding-bottom: 5px;
+
+    color: #0e1703;
+}
+.userform input
+{
+    width: 215px;
+    height: 36px;
+    padding-left: 10px;
+
+    border: 1px solid #ccc;
+    border-style: none;
+    outline: none;
+}
+button
+{
+    width: 226px;
+    height: 36px;
+    padding: 0;
+
+    color: #fff;
+    border-style: none;
+    outline: none;
+    background-color: #37474f;
+    box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+}
+button:hover
+{
+    background-color: #455a64;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+}
+.register
+{
+    font-size: 10px;
+
+    float: right;
+
+    margin-right: 12px;
+
+    text-decoration: none;
+}
+.content
+{
+    position: absolute;
+    z-index: 1;
+
+    width: calc(100% - 220px);
+    height: calc(100% - 65px);
+    margin-left: 221px;
+
+    background-color: #fafafa;
+}
+footer
+{
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+
+    margin-right: -48px;
+
+    text-align: center;
+}
+footer p
+{
+    font-size: 11px;
+
+    color: #263238;
+}
+.right
+{
+    float: right;
+}
+.logo
+{
+    float: left;
+}
+.search input
+{
+    width: 206px;
+    height: 41px;
+    padding: 0;
+    padding-left: 14px;
+
+    border: none;
+    border-bottom: 1px solid #eee;
+    outline: none;
+    background-color: rgb(245,245,245);
+}
+.file p
+{
+    font-size: 10px;
+
+    width: 50px;
+
+    text-align: center;
+}
+.user
+{
+    height: 52px;
+    margin-top: 12.5px;
+    margin-right: 20px;
+}
+.user img
+{
+    float: right;
+
+    margin-top: -39.5px;
+
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+}
+.identity {
+    background-color: #37474f;
+}
+.user img:hover,
+.search img:hover,
+nav ul ul li:hover
+{
+    background-color: #455a64;
+}
+.user p
+{
+    font-size: 12px;
+
+    float: left;
+
+    margin: 0;
+    margin-right: 40px;
+    padding-top: 13px;
+    padding-right: 10px;
+    padding-bottom: 13px;
+    padding-left: 40px;
+}
+.file-table
+{
+    font-size: 12px;
+}
+.file-table table
+{
+    width: 100%;
+
+    border-collapse: collapse;
+}
+.file-table table,
+td,
+th
+{
+    padding: 6px;
+    padding-left: 10px;
+
+    text-align: left;
+
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+.file-table td:first-child {
+    text-align: center;
+    width: 20px;
+}
+.file-table td:last-child {
+    min-width: 18px;
+}
+.file-table td img {
+    display: none;
+    float: left;
+}
+.file-table tbody tr:hover > td img {
+    display: block;
+}
+.file-table tbody tr {
+    height: 34px;
+}
+.file-table th
+{
+    font-weight: normal;
+
+    color: #888;
+    border-bottom: 1px solid #bbb;
+    background-color: #fafafa;
+}
+.file-table tbody tr:nth-child(odd)
+{
+    background: #f2f2f2;
+}
+.file-table tbody tr:hover
+{
+    background-color: #ddd;
+}
+.file-table tfoot tr td
+{
+    color: #888;
+    border-bottom: 1px solid #fafafa;
+}
+nav ul li ul
+{
+    font-size: 12px;
+
+    position: absolute;
+    top: 55px;
+    right: 20px;
+
+    display: none;
+
+    height: auto;
+    padding: 0;
+
+    list-style: none;
+
+    text-align: left;
+
+    background-color: #37474f;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+}
+nav ul li ul li
+{
+    width: 120px;
+    height: 42px;
+
+    border-radius: 3px;
+}
+nav ul
+{
+    margin: 0;
+
+    border-radius: 3px;
+}
+nav ul li
+{
+    list-style: none;
+}
+nav a
+{
+    position: absolute;
+
+    width: calc(100% - 14px);
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 14px;
+
+    text-decoration: none;
+
+    color: #fff;
+}
+#ProfileMenu img {
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    margin-left: 0px;
+    margin-top: -3px;
+    margin-right: 5px;
+}
+#upload_div {
+    max-width: 250px;
+    min-width: 250px;
+    display: none;
+    position: absolute;
+    top: calc(50% - 125px);
+    right: calc(50% - 54.5px);
+    padding: 20px;
+    padding-top: 4px;
+    background-color: #f2f2f2;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+    border-radius: 3px;
+}
+#upload_div button {
+    width: 70px;
+    margin-top: 20px;
+    margin-right: 5px;
+    background-color: #EEE;
+    box-shadow: none;
+    color: #263238;
+    width: 65px;
+}
+#upload_div button:hover {
+    background-color: #DDD;
+}
+#upload_div input {
+    float: left;
+}
