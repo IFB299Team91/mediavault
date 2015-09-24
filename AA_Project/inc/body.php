@@ -75,12 +75,16 @@
     </aside>
 
     <section class="content">
+        <audio id="videoplayer" controls>
+            <source src="">
+        Your browser does not support the video tag.
+        </audio>
     <div id="upload_div">
-        <form>
+        <form method="post" enctype="multipart/form-data" action="file_upload.php">
             <p>Upload a file</p>
-            <input type="file" name="datafile" size="40">
+            <input type="file" name="datafile" id="datafile" size="40">
 
-            <button>ACCEPT</button>
+            <button type="submit">SUBMIT</button>
             <button onclick="CloseUpload()">CLOSE</button>
         </form>
     </div>

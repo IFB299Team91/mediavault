@@ -1,21 +1,10 @@
 <?php include "inc/header.php";
-	
+
 	$current_user = $_SESSION["loggedin"];
 
-	$sql2 = "SELECT id, email, username 
-			 FROM members 
-			 WHERE username = '".$current_user."' 
-			 OR email = '".$current_user."' ";
+	include "inc/sql.php";
 
-	$result2 = mysqli_query($conn, $sql2);
-	$user_id = mysqli_fetch_array($result2);
-	
 
-	$sql1 = "SELECT file_id, filename, user_id, size, uploaded 
-		 	 FROM files 	
-		 	 WHERE user_id = '".$user_id['id']."'";
-
-	$result = mysqli_query($conn, $sql1);
 
 	if (isset($current_user)) {
 
@@ -42,17 +31,30 @@
 			        if (mysqli_num_rows($result) > 0) {
 						
 			        	while ($file = mysqli_fetch_array($result)) {
-			                echo '
-			                <tr>
-			                    <td><img height="18" src="img/download.png"></td>
 
-			                    <td>'.$file['filename'].'</td>
+			                echo '
+
+							<script>
+							function a'.$file['file_id'].'() {
+							document.getElementById("videoplayer").src="'.$file['dir'].'";
+							document.getElementById("videoplayer").load();
+							document.getElementById("videoplayer").play();
+							}
+							</script>
+
+			                <tr>
+			                	<td><img height="14" id="'.$file['file_id'].'" src="img/play.png"></a></td>
+
+			                    <td><a onclick="a'.$file['file_id'].'()" href="#">'.$file['filename'].'</a></td>
 
 			                    <td>'.$file['size'].'</td>
 
 			                    <td>'.$file['uploaded'].'</td>
 
-			                    <td><img height="18" src="img/delete.png" onclick=""></td>
+			                    <td>
+			                    <a href="'.$file['dir'].'"><img height="18" src="img/download.png"></a>
+			                    <a href="delete.php?id='.$file['file_id'].'"><img height="18" src="img/delete.png"></a>
+			                    </td>
 			                </tr>';
 			            } 
 			        } 
