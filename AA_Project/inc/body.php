@@ -22,6 +22,9 @@
         function CloseUpload() {
         	document.getElementById("upload_div").style.display = "none";
         }
+        function CloseImage() {
+            document.getElementById("imagebox").style.display = "none";
+        }
     </script>
 </head>
 <body>
@@ -75,9 +78,12 @@
     </aside>
 
     <section class="content">
-        <audio id="videoplayer" controls>
+        <div id="imagebox">
+            <img onclick="CloseImage()" id="imageholder"src="">
+        </div>
+        <audio id="player" controls>
             <source src="">
-        Your browser does not support the video tag.
+            Your browser does not support the video tag.
         </audio>
     <div id="upload_div">
         <form method="post" enctype="multipart/form-data" action="file_upload.php">

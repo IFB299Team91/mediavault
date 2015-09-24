@@ -45,8 +45,8 @@
 
 	// Check if file already exists
 	if (file_exists($target_file)) {
-	    echo "Sorry, file already exists. ";
-	    header("refresh:1; url=home.php");
+	    //echo "Sorry, file already exists. ";
+	    header("refresh:0; url=home.php");
 	    $uploadOk = 0;
 	}
 
@@ -58,12 +58,12 @@
 
 	// Check if $uploadOk is set to 0 by an error
 	if ($uploadOk == 0) {
-	    echo "Sorry, your file was not uploaded.";
-	    header("refresh:1; url=home.php");
+	    //echo "Sorry, your file was not uploaded.";
+	    header("refresh:0; url=home.php");
 	// if everything is ok, try to upload file
 	} else {
 	    if (move_uploaded_file($_FILES["datafile"]["tmp_name"], $target_file)) {
-	        echo "The file ". basename( $_FILES["datafile"]["name"]). " has been uploaded.";
+	        //echo "The file ". basename( $_FILES["datafile"]["name"]). " has been uploaded.";
 
 	        $sql3 = "INSERT INTO files 
 	        		 (user_id, filename, size, uploaded, dir)
@@ -79,8 +79,8 @@
 			header("refresh:0; url=home.php");
 
 	    } else {
-	        echo "Sorry, there was an error uploading your file.";
-	        header("refresh:1; url=home.php");
+	        //echo "Sorry, there was an error uploading your file.";
+	        header("refresh:0; url=home.php");
 	    }
 	}
 ?>
