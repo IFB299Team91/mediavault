@@ -69,13 +69,17 @@ aside
 }
 .options img {
     margin-bottom: -2.5px;
-    margin-right: 6px;
+    margin-right: 12px;
 }
 .options li
 {
     width: 220px;
     height: 42px;
     border-bottom: 1px solid #EEE;
+}
+.options li:last-child {
+    position: absolute;
+    bottom: 0;
 }
 .options li:hover
 {
@@ -406,16 +410,30 @@ nav a
     float: left;
 }
 #player {
+    display: none;
     width: 100%;
     position: absolute;
     bottom: 0;
+}
+#vidplayer {
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+    margin: auto;
+}
+#vidplayerwrap {
+    display: none;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: #151515;
 }
 #imagebox {
     display: none;
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #000;
+    background-color: #151515;
 }
 #imageholder {
     display: block;
@@ -426,4 +444,7 @@ nav a
 
 audio {
     background-color: #151515;
+}
+video {
+    vertical-align: middle;
 }

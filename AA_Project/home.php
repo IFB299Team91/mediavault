@@ -41,7 +41,9 @@
 								var resAudio = strAudio.match(/(.ogg|.mp3)/g);
 
 								if (strAudio.match(resAudio) ) {
-								  // There was a match.				
+								  // There was a match.		
+								    document.getElementById("player").style.display="block";	
+									document.getElementById("vidplayerwrap").style.display="none";			
 									document.getElementById("player").src="'.$file['dir'].'";
 									document.getElementById("player").load();
 									document.getElementById("player").play();
@@ -54,8 +56,25 @@
 
 								if (strImage.match(resImage) ) {
 								  // There was a match.
+									document.getElementById("vidplayerwrap").style.display="none";	
 									document.getElementById("imagebox").style.display="block";	
 									document.getElementById("imageholder").src="'.$file['dir'].'";	
+	
+								} else {
+								  // No match.
+								} 
+
+								var strVideo = "'.$file['filename'].'"; 
+								var resVideo = strVideo.match(/(.ogv|.mov|.avi|.mkv)/g);
+
+								if (strVideo.match(resVideo) ) {
+								  // There was a match.
+									document.getElementById("player").style.display="none";	
+									document.getElementById("vidplayerwrap").style.display="block";	
+									document.getElementById("vidplayer").style.display="block";	
+									document.getElementById("vidplayer").src="'.$file['dir'].'";	
+									document.getElementById("vidplayer").load();
+									document.getElementById("vidplayer").play();
 	
 								} else {
 								  // No match.
@@ -66,7 +85,7 @@
 					        function FileImage() {
 					            var strimg = "'.$file['filename'].'"; 
 					            var resimg = strimg.match(/(.gif|.jpg|.png)/g);
-					            var resvid = strimg.match(/(.mov|.ogv|.avi)/g);
+					            var resvid = strimg.match(/(.mkv|.ogv|.avi)/g);
 					            var resaud = strimg.match(/(.ogg|.mp3|.m4a)/g);
 
 					            if (strimg.match(resimg) ) {
@@ -76,13 +95,13 @@
 					            } else if (strimg.match(resvid) ) {
 					                document.getElementById("'.$file['file_id'].'").src="img/video.png";
 					            } else {
-
+					            	document.getElementById("'.$file['file_id'].'").src="img/placeholder.png";
 					            }
 					        }
 							</script>
 
 			                <tr>
-			                	<td><img height="14" id="'.$file['file_id'].'" onload="FileImage()" src="img/photo.png"></a></td>
+			                	<td><img height="14" id="'.$file['file_id'].'" onload="FileImage()" src="img/placeholder.png"></a></td>
 
 			                    <td><a onclick="a'.$file['file_id'].'()" href="#">'.$file['filename'].'</a></td>
 

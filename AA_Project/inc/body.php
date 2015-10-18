@@ -25,6 +25,10 @@
         function CloseImage() {
             document.getElementById("imagebox").style.display = "none";
         }
+        function CloseVideo() {
+            document.getElementById("vidplayerwrap").style.display = "none";
+        }
+
     </script>
 </head>
 <body>
@@ -70,14 +74,29 @@
             <ul>
                 <li class="search"><input name="search" placeholder="Search..." type="text"></li>
 
+                <li onclick="UploadFile()"><a href="#"><img src="img/upload.png" height="19">Upload</a></li>
+
                 <li><a href="home.php"><img src="img/folder.png" height="19">All Files</a></li>
 
-                <li onclick="UploadFile()"><a href="#"><img src="img/upload.png" height="19">Upload</a></li>
+                <li><a href="home.php"><img src="img/photolib.png" width="19">Photos</a></li>
+
+                <li><a href="home.php"><img src="img/audiolib.png" width="19">Music</a></li>
+
+                <li><a href="home.php"><img src="img/videolib.png" width="19">Videos</a></li>
+
+                <li><a href="home.php"><img src="img/setting.png" width="19">Settings</a></li>
             </ul>
         </div>
     </aside>
 
     <section class="content">
+    <div id="vidplayerwrap">
+        <video onclick="CloseVideo()" id="vidplayer" controls>
+            <source src="">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
         <div id="imagebox">
             <img onclick="CloseImage()" id="imageholder"src="">
         </div>
