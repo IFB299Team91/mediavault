@@ -9,9 +9,7 @@
 	$uploadOk = 1;
 	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
-	function format_size($target_file)
-
-	    {
+	function format_size($target_file) {
 
 			$bytes = $target_file;
 
@@ -43,10 +41,35 @@
 	        return $bytes;
 		}
 
+		function thumb_image($imageFileType) {
+
+			$string = $imageFileType;
+
+			 if ($string == "jpg" | $string == "png" | $string == "gif" ) {
+			 	
+			 	$string = "image";
+
+			 } else if ($string == "mov" | $string == "avi" | $string == "ogv" ) {
+
+			 	$string = "video";
+
+			 } else if ($string == "mp3" | $string == "ogg") {
+
+			 	$string = "audio";
+
+			 } else if ($string == "pdf" | $string == "doc" | $string == "docx" ) {
+
+			 	$string = "text";
+
+			 } 
+
+			 return $string;
+		}
+
 	// Check if file already exists
 	if (file_exists($target_file)) {
 	    //echo "Sorry, file already exists. ";
-	    header("refresh:0; url=home.php");
+	    header("refresh:.5; url=home.php");
 	    $uploadOk = 0;
 	}
 
@@ -59,28 +82,29 @@
 	// Check if $uploadOk is set to 0 by an error
 	if ($uploadOk == 0) {
 	    //echo "Sorry, your file was not uploaded.";
-	    header("refresh:0; url=home.php");
+	    header("refresh:.5; url=home.php");
 	// if everything is ok, try to upload file
 	} else {
 	    if (move_uploaded_file($_FILES["datafile"]["tmp_name"], $target_file)) {
-	        //echo "The file ". basename( $_FILES["datafile"]["name"]). " has been uploaded.";
+	        echo "The file ". basename( $_FILES["datafile"]["name"]). " has been uploaded.";
 
 	        $sql3 = "INSERT INTO files 
-	        		 (user_id, filename, size, uploaded, dir)
+	        		 (user_id, filename, size, uploaded, dir, thumb)
 	        		 VALUES
 	        		 ('".$user_id['id']."',
 	        		 ' ". basename( $_FILES['datafile']['name']). " ',
 	        		 ' ".format_size(filesize($target_file))." ',
 	        		 ' ".date('M j, g:i A', filemtime($target_file))." ',
-	        		 ' ".$target_file." ')";
+	        		 ' ".$target_file." ',
+	        		 ' ".thumb_image($imageFileType)." ')";
 
 			$result3 = mysqli_query($conn, $sql3);
 
-			header("refresh:0; url=home.php");
+			header("refresh:.5; url=home.php");
 
 	    } else {
 	        //echo "Sorry, there was an error uploading your file.";
-	        header("refresh:0; url=home.php");
+	        header("refresh:.5; url=home.php");
 	    }
 	}
 ?>

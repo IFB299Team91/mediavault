@@ -1,143 +1,72 @@
-<?php include "inc/header.php";
+<?php 	include "inc/header.php";
 
-	$current_user = $_SESSION["loggedin"];
+		$current_user = $_SESSION["loggedin"];
 
-	include "inc/sql.php";
+		include "inc/sql.php";
 
+		if (isset($current_user)) {
 
-
-	if (isset($current_user)) {
-
-		include "inc/body.php";
-
-		echo '  <div class="file-table">
-		            <table>
-		                <thead>
-		                    <tr>
-		                        <th></th>
-
-		                        <th>Name</th>
-
-		                        <th>Size</th>
-
-		                        <th>Modified</th>
-
-		                        <th></th>
-		                    </tr>
-		                </thead>
-
-		                <tbody>';
-
-			        if (mysqli_num_rows($result) > 0) {
-						
-			        	while ($file = mysqli_fetch_array($result)) {
-
-			                echo '
-
-							<script>
-							function a'.$file['file_id'].'() {	
-
-								var strAudio = "'.$file['filename'].'"; 
-								var resAudio = strAudio.match(/(.ogg|.mp3)/g);
-
-								if (strAudio.match(resAudio) ) {
-								  // There was a match.		
-								    document.getElementById("player").style.display="block";	
-									document.getElementById("vidplayerwrap").style.display="none";			
-									document.getElementById("player").src="'.$file['dir'].'";
-									document.getElementById("player").load();
-									document.getElementById("player").play();
-								} else {
-								  // No match.
-								} 
-
-								var strImage = "'.$file['filename'].'"; 
-								var resImage = strImage.match(/(.gif|.jpg|.png)/g);
-
-								if (strImage.match(resImage) ) {
-								  // There was a match.
-									document.getElementById("vidplayerwrap").style.display="none";	
-									document.getElementById("imagebox").style.display="block";	
-									document.getElementById("imageholder").src="'.$file['dir'].'";	
-	
-								} else {
-								  // No match.
-								} 
-
-								var strVideo = "'.$file['filename'].'"; 
-								var resVideo = strVideo.match(/(.ogv|.mov|.avi|.mkv)/g);
-
-								if (strVideo.match(resVideo) ) {
-								  // There was a match.
-									document.getElementById("player").style.display="none";	
-									document.getElementById("vidplayerwrap").style.display="block";	
-									document.getElementById("vidplayer").style.display="block";	
-									document.getElementById("vidplayer").src="'.$file['dir'].'";	
-									document.getElementById("vidplayer").load();
-									document.getElementById("vidplayer").play();
-	
-								} else {
-								  // No match.
-								} 
-
-							}
-
-					        function FileImage() {
-					            var strimg = "'.$file['filename'].'"; 
-					            var resimg = strimg.match(/(.gif|.jpg|.png)/g);
-					            var resvid = strimg.match(/(.mkv|.ogv|.avi)/g);
-					            var resaud = strimg.match(/(.ogg|.mp3|.m4a)/g);
-
-					            if (strimg.match(resimg) ) {
-					                document.getElementById("'.$file['file_id'].'").src="img/photo.png";
-					            } else if (strimg.match(resaud) ) {
-					                document.getElementById("'.$file['file_id'].'").src="img/audio.png";
-					            } else if (strimg.match(resvid) ) {
-					                document.getElementById("'.$file['file_id'].'").src="img/video.png";
-					            } else {
-					            	document.getElementById("'.$file['file_id'].'").src="img/placeholder.png";
-					            }
-					        }
-							</script>
-
-			                <tr>
-			                	<td><img height="14" id="'.$file['file_id'].'" onload="FileImage()" src="img/placeholder.png"></a></td>
-
-			                    <td><a onclick="a'.$file['file_id'].'()" href="#">'.$file['filename'].'</a></td>
-
-			                    <td>'.$file['size'].'</td>
-
-			                    <td>'.$file['uploaded'].'</td>
-
-			                    <td>
-			                    <a href="'.$file['dir'].'" download><img height="18" src="img/download.png"></a>
-			                    <a href="delete.php?id='.$file['file_id'].'"><img height="18" src="img/delete.png"></a>
-			                    </td>
-			                </tr>';
-			            } 
-			        } 
-
-		echo '	    </tbody>
-
-		                <tfoot>
-		                    <tr>
-		                        <td></td>
-		      
-		                        <td>'.mysqli_num_rows($result).' Results</td>
-							
-								<td></td>
-
-		                        <td></td>
-		                    </tr>
-		                </tfoot>
-		            </table>
-		        </div>
-		    </section>
-		</body>
-		</html>';
-	}
+			include "inc/body.php"; 
+?>
+				<div class="file-table">
+				<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Name</th>
+						<th>Size</th>
+						<th>Modified</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+<?php 	
+			if (mysqli_num_rows($result) > 0) {
+				while ($file = mysqli_fetch_array($result)) {
+					include "inc/functions.js";
+?>		
+					<tr>
+						<td><img src="img/<?php echo trim($file['thumb']) ?>.png" height="12"></td>
+						<td><a onclick="a<?php echo $file['file_id'] ?>()" href="#"><?php echo $file['filename'] ?></a></td>
+						<td><?php echo $file['size'] ?></td>
+						<td><?php echo $file['uploaded'] ?></td>
+						<td class="contact-delete">
+							<form action="delete.php?id="<?php echo $file['file_id'] ?>"" method="post">
+								<a onclick="c<?php echo $file['file_id'] ?>()" href="#">
+									<input type="button" name="share" value="Share" onclick="ShowShare()">
+								</a>
+								<a href="<?php echo $file['dir'] ?>" download>
+									<input type="button" name="download" value="Download">
+								</a>
+								<a onclick="d<?php echo $file['file_id'] ?>()" href="#">
+									<input type="button" name="edit" value="Edit" onclick="ShowEdit()">
+								</a>
+								<input type="hidden" name="name" value="<?php echo $file['file_id'] ?>">
+								<input type="submit" name="delete" value="Delete">
+							</form>
+						</td>
+					</tr>
+ <?php
+				} 
+			} 
+?>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td></td>
+						<td><?php echo mysqli_num_rows($result) ?> Results</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</section>
+</body>
+</html> 
+<?php
+}
 	else {
-		header("refresh:2; url=index.php");
-	}
-
+	header("refresh:2; url=index.php");
+}
 ?>
