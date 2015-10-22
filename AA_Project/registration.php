@@ -4,7 +4,7 @@
 		echo 'You are already a registered user, ' . $_SESSION['loggedin'] . '.';
 		header("refresh:2; url=index.php");
 	} else {
-		echo '
+?>
 		<!DOCTYPE html>
 		<html>
 		<head>
@@ -35,7 +35,7 @@
 		        </div>
 		    </section>
 		</body>
-		</html>';
+		</html>
+<?php 
 	}
-
 ?>
